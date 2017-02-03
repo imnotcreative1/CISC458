@@ -741,7 +741,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	{ Set up the charClassMap, initialize the scanner and parser
 	  S/SL tables, insert keywords and predeclared identifiers in
 	  the ident table and set any requested options.		    }
-	var
+	{var
 	    i :  integer;
 	    c :  char;
 
@@ -930,7 +930,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	    inputChar := blank;
 	    AcceptScanToken;
 	    rewrite(parseStream {, NparseStream} );
-
+	}
 	end { Initialize };
 
 
