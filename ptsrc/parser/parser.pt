@@ -741,6 +741,13 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	{ Set up the charClassMap, initialize the scanner and parser
 	  S/SL tables, insert keywords and predeclared identifiers in
 	  the ident table and set any requested options.		    }
+	
+	parseInputToken := pNewLine;
+	newInputLine := false;
+
+	while parseInputToken <> pEndFile do
+	    AcceptSyntaxToken;
+
 	{var
 	    i :  integer;
 	    c :  char;
