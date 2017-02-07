@@ -23,6 +23,14 @@ type
 if
 case
 while
+using
+val
+def
+unless
+elsif
+break
+when
+module
 
 % End of keywords
 

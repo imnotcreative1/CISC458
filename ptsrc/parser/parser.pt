@@ -49,56 +49,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 { ===== Character classes (scanner input tokens), copied here from scan.def }
 
 	{ Input Tokens }
-	lLetter = 0;
-	firstCharClass = 0;
-	lDigit = 1;
-	lPlus = 2;
-	lMinus = 3;
-	lStar = 4;
-	lColon = 5;
-	lEquals = 6;
-	lDot = 7;
-	lComma = 8;
-	lSemicolon = 9;
-	lQuote = 10;
-	lLeftAngle = 11;
-	lRightAngle = 12;
-	lLeftParen = 13;
-	lRightParen = 14;
-	lLeftBracket = 15;
-	lRightBracket = 16;
-	lLeftBrace = 17;
-	lRightBrace = 18;
-	lSlash = 19;
-	lOrBar = 20;
-	lHash = 21;
-	lExclamation = 22;
-	lPercent = 23;
-	lQuestion = 24;
-	lDollar = 25;
-	lBlank = 26;
-	lIllegal = 27;
-	lNewLine = 28;
-	lTab = 29;
-	lNewPage = 30;
-	lEndFile = 31;
-	lastCharClass = 31;
-
-
-{ ===== }
-
-
-	{ Scanner -> Parser token stream definitions }
-	firstSyntaxToken  =  -1;
-
-	{ Nonexistent input token used only in syntax error recovery }
-	pSyntaxError = -1;
-
-{ ===== Scanner -> Parser token stream defintiions (scanner output tokens),
-	copied here from scan.def or parser.def, which must agree!}
-
-	{ Output Tokens }
-	pDiv = 0;
+pDiv = 0;
 	firstKeywordToken = 0;
 	pMod = 1;
 	pOr = 2;
@@ -116,41 +67,49 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	pIf = 14;
 	pCase = 15;
 	pWhile = 16;
-	lastKeywordToken = 16;
-	pIdentifier = 17;
-	firstCompoundInputToken = 17;
-	pInteger = 18;
-	pLiteral = 19;
-	lastCompoundInputToken = 19;
-	pNewLine = 20;
-	pEndFile = 21;
-	pPlus = 22;
-	pMinus = 23;
-	pStar = 24;
-	pColonEquals = 25;
-	pDot = 26;
-	pComma = 27;
-	pSemicolon = 28;
-	pColon = 29;
-	pEquals = 30;
-	pNotEqual = 31;
-	pLess = 32;
-	pLessEqual = 33;
-	pGreaterEqual = 34;
-	pGreater = 35;
-	pLeftParen = 36;
-	pRightParen = 37;
-	pLeftBracket = 38;
-	pRightBracket = 39;
-	pDotDot = 40;
-	pSlash = 41;
-	pOrBar = 42;
-	pHash = 43;
-	pExclamation = 44;
-	pPercent = 45;
-	pQuestion = 46;
-	pDollar = 47;
-	lastSyntaxToken = 40;
+	pUsing = 17;
+	pVal = 18;
+	pDef = 19;
+	pUnless = 20;
+	pElsIf = 21;
+	pBreak = 22;
+	pWhen = 23;
+	pModule = 24;
+	lastKeywordToken = 24;
+	pIdentifier = 25;
+	firstCompoundInputToken = 25;
+	pInteger = 26;
+	pLiteral = 27;
+	lastCompoundInputToken = 27;
+	pNewLine = 28;
+	pEndFile = 29;
+	pPlus = 30;
+	pMinus = 31;
+	pStar = 32;
+	pDoubleEquals = 33;
+	pDot = 34;
+	pComma = 35;
+	pSemicolon = 36;
+	pColon = 37;
+	pEquals = 38;
+	pNotEqual = 39;
+	pLess = 40;
+	pLessEqual = 41;
+	pGreaterEqual = 42;
+	pGreater = 43;
+	pLeftParen = 44;
+	pRightParen = 45;
+	pLeftBracket = 46;
+	pRightBracket = 47;
+	pDotDot = 48;
+	pSlash = 49;
+	pOrBar = 50;
+	pHash = 51;
+	pExclamation = 52;
+	pPercent = 53;
+	pQuestion = 54;
+	pDollar = 55;
+	lastSyntaxToken = 48;
 
 { ===== }
 
@@ -304,7 +263,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 
 	{ The following value MUST match the total number of
 	  keywords and idents entered in the stdIdentifiers file. }
-	numberStdIdentifiers = 36;
+	numberStdIdentifiers = 44;
 
 	textBufferSize = 80;
 	identTableSize = 1601;	{ must be prime }
@@ -328,6 +287,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	{ misc. }
 	tab = '	';
 	blank = ' ';
+	%Changed to " to recognize string literals
 	quote = '"';
 	null = 0;
 

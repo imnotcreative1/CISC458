@@ -74,7 +74,16 @@ Output :
 	pIf
 	pCase
 	pWhile
-	lastKeywordToken = pWhile
+	%Added keywords
+	pUsing
+	pVal
+	pDef
+	pUnless
+	pElsIf
+	pBreak
+	pWhen
+	pModule
+	lastKeywordToken = pModule
 
 	% Scanner tokens -
 	%   These are the tokens actually recognized by the Scanner itself.
@@ -94,7 +103,7 @@ Output :
 	pPlus
 	pMinus
 	pStar
-	pColonEquals
+	pDoubleEquals
 	pDot
 	pComma
 	pSemicolon
@@ -170,13 +179,9 @@ Scan :
 		.pRightBracket
 	    | ',':
 		.pComma
+		%removed check for colon equals
 	    | ':':
-		[
-		    | '=':
-			.pColonEquals
-		    | *:
-			.pColon
-		]
+		.pColon
 	    | lDigit:
 		oBufferSave
 		@Integer
@@ -187,8 +192,14 @@ Scan :
 			@Identifier
 		    | *:
 		]
+		%Added check for double equals
 	    | '=':
-		.pEquals
+		[
+		    | '=':
+			.pDoubleEquals
+		    | *:
+			.pEquals
+		]
 	    | '+':
 		.pPlus
 		%Added characters
@@ -196,8 +207,14 @@ Scan :
 	    	.pSlash
 	    | '#':
 	    	.pHash
+		%Check second character for = to determine if line is notEquals or just an !
 	    | '!':
-		.pExclamation
+		[
+		    | '=':
+			.pNotEqual
+		    | *:
+			.pExclamation
+		]
 	    | '|':
 		.pOrBar
 		| '%':
