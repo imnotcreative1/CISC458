@@ -124,7 +124,7 @@ Output :
 	pOrBar
 	pHash
 	pExclamation
-	pPercent
+	pPercent %should never be emiited
 	pQuestion
 	pDollar
 	lastSyntaxToken = pDotDot;
@@ -165,12 +165,7 @@ Scan :
 	    | ';':
 		.pSemicolon
 	    | '(':
-		[
-		    | '*':
-			@AlternateComment
-		    | *:
-			.pLeftParen
-		]
+		.pLeftParen
 	    | ')':
 		.pRightParen
 	    | '[':
@@ -217,8 +212,8 @@ Scan :
 		]
 	    | '|':
 		.pOrBar
-		| '%':
-	    	.pPercent
+	    | '%':	%Change made: new comment syntax
+	    	@Comment
 	    | '$':
 			.pDollar
 	    | '?':
@@ -249,9 +244,7 @@ Scan :
 			.pGreaterEqual
 		    | *:
 			.pGreater
-		]
-	    | '{':
-		@Comment
+		] 
 	    | '*':
 		.pStar
 	    | lNewPage:
@@ -312,35 +305,14 @@ Literal :
 Comment :
 	% Discard the contents of a comment
 
-	{[
-	    | '}':
-		>
+	{[			% Change made: no longer closing comment character
 	    | lNewLine:
 		.pNewLine
-	    | lEndFile:		% comment must be closed before EOF
-		#eCommentEOF
+	    	>
+	    | lEndFile:		% Change made: comment no longer must be closed before EOF
 		.pEndFile
 		>
 	    | *:	% comment may contain any other character
 		?
 	]};
-
-AlternateComment :
-	{[
-	    | '*':
-		[
-		    | ')':
-			>
-		    | *:
-		]
-	    | lNewLine:
-		.pNewLine
-	    | lEndFile:
-		#eCommentEOF
-		.pEndFile
-		>
-	    | *:
-		?
-	]};
-
 end

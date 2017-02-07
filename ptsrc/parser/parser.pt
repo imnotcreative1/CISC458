@@ -49,7 +49,55 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 { ===== Character classes (scanner input tokens), copied here from scan.def }
 
 	{ Input Tokens }
-pDiv = 0;
+	lLetter = 0;
+	firstCharClass = 0;
+	lDigit = 1;
+	lPlus = 2;
+	lMinus = 3;
+	lStar = 4;
+	lColon = 5;
+	lEquals = 6;
+	lDot = 7;
+	lComma = 8;
+	lSemicolon = 9;
+	lQuote = 10;
+	lLeftAngle = 11;
+	lRightAngle = 12;
+	lLeftParen = 13;
+	lRightParen = 14;
+	lLeftBracket = 15;
+	lRightBracket = 16;
+	lLeftBrace = 17;
+	lRightBrace = 18;
+	lSlash = 19;
+	lOrBar = 20;
+	lHash = 21;
+	lExclamation = 22;
+	lPercent = 23;
+	lQuestion = 24;
+	lDollar = 25;
+	lBlank = 26;
+	lIllegal = 27;
+	lNewLine = 28;
+	lTab = 29;
+	lNewPage = 30;
+	lEndFile = 31;
+	lastCharClass = 31;
+
+
+{ ===== }
+
+	{ Scanner -> Parser token stream definitions }
+	firstSyntaxToken  =  -1;
+
+	{ Nonexistent input token used only in syntax error recovery }
+	pSyntaxError = -1;
+
+{ ===== Scanner -> Parser token stream defintiions (scanner output tokens),
+	copied here from scan.def or parser.def, which must agree!}
+
+	{ Output Tokens }
+    pDiv = 0;
 	firstKeywordToken = 0;
 	pMod = 1;
 	pOr = 2;
@@ -110,9 +158,8 @@ pDiv = 0;
 	pQuestion = 54;
 	pDollar = 55;
 	lastSyntaxToken = 48;
-
+	
 { ===== }
-
 
 	{ Parser -> Semantic pass token stream definitions }
 
@@ -287,7 +334,7 @@ pDiv = 0;
 	{ misc. }
 	tab = '	';
 	blank = ' ';
-	%Changed to " to recognize string literals
+	{Changed to " to recognize string literals}
 	quote = '"';
 	null = 0;
 

@@ -40,7 +40,7 @@ module
 
 % Predeclared type names
 integer
-char
+string
 boolean
 text
 
