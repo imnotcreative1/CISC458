@@ -10,26 +10,19 @@ div
 mod
 or
 and
-not
 then
 else
 of
 end
-until
 do
 array
 file
 packed
-program
-const
 var
 type
-procedure
-begin
 if
 case
 while
-repeat
 
 % End of keywords
 
