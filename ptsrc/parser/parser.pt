@@ -742,13 +742,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	  S/SL tables, insert keywords and predeclared identifiers in
 	  the ident table and set any requested options.		    }
 	
-	parseInputToken := pNewLine;
-	newInputLine := false;
-
-	while parseInputToken <> pEndFile do
-	    AcceptSyntaxToken;
-
-	{var
+	var
 	    i :  integer;
 	    c :  char;
 
@@ -937,7 +931,7 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	    inputChar := blank;
 	    AcceptScanToken;
 	    rewrite(parseStream {, NparseStream} );
-	}
+	
 	end { Initialize };
 
 
@@ -1672,8 +1666,17 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
     { Main program ScannerParser }
     begin
 	Initialize;
-	Parser;
+	(*Parser;
 	{ No sense running semantic phase if serious syntax errors found }
 	if errorCount > 0 then
 	    rewrite(parseStream {, NparseStream} );
+	*)
+	
+	parseInputToken := pNewLine;
+	newInputLine := false;
+
+	while parseInputToken <> pEndFile do
+	    AcceptSyntaxToken;
+
+
     end.  { ScannerParser }
