@@ -69,13 +69,21 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	lRightBracket = 16;
 	lLeftBrace = 17;
 	lRightBrace = 18;
-	lBlank = 19;
-	lIllegal = 20;
-	lNewLine = 21;
-	lTab = 22;
-	lNewPage = 23;
-	lEndFile = 24;
-	lastCharClass = 24;
+	lSlash = 19;
+	lOrBar = 20;
+	lHash = 21;
+	lExclamation = 22;
+	lPercent = 23;
+	lQuestion = 24;
+	lDollar = 25;
+	lBlank = 26;
+	lIllegal = 27;
+	lNewLine = 28;
+	lTab = 29;
+	lNewPage = 30;
+	lEndFile = 31;
+	lastCharClass = 31;
+
 
 { ===== }
 
@@ -142,6 +150,13 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	pLeftBracket = 45;
 	pRightBracket = 46;
 	pDotDot = 47;
+	pSlash = 48;
+	pOrBar = 49;
+	pHash = 50;
+	pExclamation = 51;
+	pPercent = 52;
+	pQuestion = 53;
+	pDollar = 54;
 	lastSyntaxToken = 47;
 
 { ===== }
@@ -818,6 +833,14 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	    charClassMap[ord(']')] := lRightBracket;
 	    charClassMap[ord('{')] := lLeftBrace;
 	    charClassMap[ord('}')] := lRightBrace;
+		{ Added classmaps for added characters}
+		charClassMap[ord('/')] := lSlash;
+		charClassMap[ord('|')] := lOrBar;
+		charClassMap[ord('#')] := lHash;
+		charClassMap[ord('!')] := lExclamation;
+		charClassMap[ord('?')] := lQuestion;
+		charClassMap[ord('$')] := lDollar;
+		charClassMap[ord('%')] := lPercent;
 
 	    { Initialize the scan ssl table }
 	    reset(scanSsl {, NscanSsl} );

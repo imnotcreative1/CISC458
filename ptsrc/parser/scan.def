@@ -22,13 +22,20 @@
 	lRightBracket = 16;
 	lLeftBrace = 17;
 	lRightBrace = 18;
-	lBlank = 19;
-	lIllegal = 20;
-	lNewLine = 21;
-	lTab = 22;
-	lNewPage = 23;
-	lEndFile = 24;
-	lastCharClass = 24;
+	lSlash = 19;
+	lOrBar = 20;
+	lHash = 21;
+	lExclamation = 22;
+	lPercent = 23;
+	lQuestion = 24;
+	lDollar = 25;
+	lBlank = 26;
+	lIllegal = 27;
+	lNewLine = 28;
+	lTab = 29;
+	lNewPage = 30;
+	lEndFile = 31;
+	lastCharClass = 31;
 
 	{ Output Tokens }
 	pDiv = 0;
@@ -83,6 +90,13 @@
 	pLeftBracket = 45;
 	pRightBracket = 46;
 	pDotDot = 47;
+	pSlash = 48;
+	pOrBar = 49;
+	pHash = 50;
+	pExclamation = 51;
+	pPercent = 52;
+	pQuestion = 53;
+	pDollar = 54;
 	lastSyntaxToken = 47;
 
 	{ Input/Output Tokens }
@@ -100,14 +114,14 @@
 
 	{ S/SL Rule Table Addresses } {
 	Scan = 0;
-	Identifier = 206;
-	AlternateComment = 311;
-	Integer = 223;
-	Literal = 238;
-	Comment = 282;
+	Identifier = 248;
+	AlternateComment = 353;
+	Integer = 265;
+	Literal = 280;
+	Comment = 324;
 	}
 
 	{ S/SL Table Parameters }
-	sslTblSize = 347;
+	sslTblSize = 389;
 	minSslTableValue = -32767;
 	maxSslTableValue = 32767;
