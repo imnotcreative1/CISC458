@@ -1,0 +1,25 @@
+12a13
+> not
+16a18
+> until
+20a23,24
+> program
+> const
+22a27,28
+> procedure
+> begin
+26,33c32
+< using
+< val
+< def
+< unless
+< elsif
+< break
+< when
+< module
+---
+> repeat
+43c42
+< string
+---
+> char

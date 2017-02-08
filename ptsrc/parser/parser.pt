@@ -834,8 +834,6 @@ program ScannerParser(output, stdIdentifiers, scanSsl, parseSsl, source,
 	    charClassMap[ord('{')] := lLeftBrace;
 	    charClassMap[ord('}')] := lRightBrace;
 		{ Added classmaps for added characters}
-		charClassMap[ord('/')] := lSlash;
-		charClassMap[ord('|')] := lOrBar;
 		charClassMap[ord('#')] := lHash;
 		charClassMap[ord('!')] := lExclamation;
 		charClassMap[ord('?')] := lQuestion;

@@ -35,8 +35,6 @@ Input :
 	lLeftBrace	'{'
 	lRightBrace	'}'
 	%Added characters
-	lSlash '/'
-	lOrBar '|'
 	lHash '#'
 	lExclamation '!'
 	lPercent '%'
@@ -120,8 +118,6 @@ Output :
 	pRightBracket
 	pDotDot
 	%Added Characters
-	pSlash
-	pOrBar
 	pHash
 	pExclamation
 	pPercent %should never be emiited
@@ -198,8 +194,6 @@ Scan :
 	    | '+':
 		.pPlus
 		%Added characters
-	    | '/':
-	    	.pSlash
 	    | '#':
 	    	.pHash
 		%Check second character for = to determine if line is notEquals or just an !

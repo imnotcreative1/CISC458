@@ -1,0 +1,133 @@
+37,42d36
+< 	%Added characters
+< 	lHash '#'
+< 	lExclamation '!'
+< 	lPercent '%'
+< 	lQuestion '?'
+< 	lDollar '$'
+50d43
+< 	
+61a55
+> 	pNot
+65a60
+> 	pUntil
+69a65,66
+> 	pProgram
+> 	pConst
+71a69,70
+> 	pProcedure
+> 	pBegin
+75,84c74,75
+< 	%Added keywords
+< 	pUsing
+< 	pVal
+< 	pDef
+< 	pUnless
+< 	pElsIf
+< 	pBreak
+< 	pWhen
+< 	pModule
+< 	lastKeywordToken = pModule
+---
+> 	pRepeat
+> 	lastKeywordToken = pRepeat
+104c95
+< 	pDoubleEquals
+---
+> 	pColonEquals
+120,125d110
+< 	%Added Characters
+< 	pHash
+< 	pExclamation
+< 	pPercent %should never be emiited
+< 	pQuestion
+< 	pDollar
+164c149,154
+< 		.pLeftParen
+---
+> 		[
+> 		    | '*':
+> 			@AlternateComment
+> 		    | *:
+> 			.pLeftParen
+> 		]
+173d162
+< 		%removed check for colon equals
+175c164,169
+< 		.pColon
+---
+> 		[
+> 		    | '=':
+> 			.pColonEquals
+> 		    | *:
+> 			.pColon
+> 		]
+186d179
+< 		%Added check for double equals
+188,193c181
+< 		[
+< 		    | '=':
+< 			.pDoubleEquals
+< 		    | *:
+< 			.pEquals
+< 		]
+---
+> 		.pEquals
+196,214d183
+< 		%Added characters
+< 	    | '#':
+< 	    	.pHash
+< 		%Check second character for = to determine if line is notEquals or just an !
+< 	    | '!':
+< 		[
+< 		    | '=':
+< 			.pNotEqual
+< 		    | *:
+< 			.pExclamation
+< 		]
+< 	    | '|':
+< 		.pOrBar
+< 	    | '%':	%Change made: new comment syntax
+< 	    	@Comment
+< 	    | '$':
+< 			.pDollar
+< 	    | '?':
+< 		.pQuestion
+241c210,212
+< 		] 
+---
+> 		]
+> 	    | '{':
+> 		@Comment
+302c273,275
+< 	{[			% Change made: no longer closing comment character
+---
+> 	{[
+> 	    | '}':
+> 		>
+305,306c278,279
+< 	    	>
+< 	    | lEndFile:		% Change made: comment no longer must be closed before EOF
+---
+> 	    | lEndFile:		% comment must be closed before EOF
+> 		#eCommentEOF
+311a285,303
+> 
+> AlternateComment :
+> 	{[
+> 	    | '*':
+> 		[
+> 		    | ')':
+> 			>
+> 		    | *:
+> 		]
+> 	    | lNewLine:
+> 		.pNewLine
+> 	    | lEndFile:
+> 		#eCommentEOF
+> 		.pEndFile
+> 		>
+> 	    | *:
+> 		?
+> 	]};
+> 
