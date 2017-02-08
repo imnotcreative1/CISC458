@@ -73,7 +73,7 @@
 < 		]
 ---
 > 		.pEquals
-196,214d183
+196,212d183
 < 		%Added characters
 < 	    | '#':
 < 	    	.pHash
@@ -85,33 +85,31 @@
 < 		    | *:
 < 			.pExclamation
 < 		]
-< 	    | '|':
-< 		.pOrBar
 < 	    | '%':	%Change made: new comment syntax
 < 	    	@Comment
 < 	    | '$':
 < 			.pDollar
 < 	    | '?':
 < 		.pQuestion
-241c210,212
+239c210,212
 < 		] 
 ---
 > 		]
 > 	    | '{':
 > 		@Comment
-302c273,275
+300c273,275
 < 	{[			% Change made: no longer closing comment character
 ---
 > 	{[
 > 	    | '}':
 > 		>
-305,306c278,279
+303,304c278,279
 < 	    	>
 < 	    | lEndFile:		% Change made: comment no longer must be closed before EOF
 ---
 > 	    | lEndFile:		% comment must be closed before EOF
 > 		#eCommentEOF
-311a285,303
+309a285,303
 > 
 > AlternateComment :
 > 	{[

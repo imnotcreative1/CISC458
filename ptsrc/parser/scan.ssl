@@ -204,8 +204,6 @@ Scan :
 		    | *:
 			.pExclamation
 		]
-	    | '|':
-		.pOrBar
 	    | '%':	%Change made: new comment syntax
 	    	@Comment
 	    | '$':
