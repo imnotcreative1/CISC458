@@ -1,0 +1,3 @@
+Each unit test it organized into a folder named appropriately
+Inside each unit test folder is the results of both ssl trace outputs as well as a documentation file and the pt file for testing
+TestAll.sh is a script to go through all files and test them and then place the ssl trace output in each respective file
