@@ -1,0 +1,1 @@
+Test old style PT Pascal commenst. Should emit tokens for identifiers inside comments.

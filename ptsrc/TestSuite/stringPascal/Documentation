@@ -1,0 +1,1 @@
+Test that scanning and screening no longer emits a string literal token for old syle PT Pascal strings.

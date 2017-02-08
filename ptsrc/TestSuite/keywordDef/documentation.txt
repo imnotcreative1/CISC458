@@ -1,0 +1,1 @@
+Test defe keyword and syntax token
